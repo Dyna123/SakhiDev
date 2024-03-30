@@ -1,0 +1,51 @@
+doctype html
+head
+  title Map and API Integration
+  meta(charset='utf-8')
+  script(type='text/javascript').
+    function GetMap() {
+    var map = new Microsoft.Maps.Map('#myMap', {
+    credentials: 'AnbScRUomudRLxg7QS_EdmeA51zf9gbLXnu9k1XD2pwD2tfbxy1oTz-1025E6QUh'
+    });
+    //Request the user's location
+    navigator.geolocation.getCurrentPosition(function(position) {
+    var loc = new Microsoft.Maps.Location(
+    position.coords.latitude,
+    position.coords.longitude);
+    // Add latitude and longitude to the data directly
+    sendDataToBackend({
+    latitude: position.coords.latitude,
+    longitude: position.coords.longitude
+    });
+    //Add a pushpin at the user's location.
+    var pin = new Microsoft.Maps.Pushpin(loc);
+    map.entities.push(pin);
+    //Center the map on the user's location.
+    map.setView({
+    center: loc,
+    zoom: 15
+    });
+    });
+    }
+    // Function to send data to your backend server
+    async function sendDataToBackend(data) {
+    const backendUrl = 'http://localhost:3000/resLoc'; // Replace with your backend server URL
+    const requestOptions = {
+      
+    method: 'POST', // or 'PUT' or 'PATCH' depending on your needs
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    };
+    // Send data to the backend
+    const res=await fetch(backendUrl, requestOptions)
+    .then(responseData => {
+    console.log('Data successfully sent to backend:',data);
+    })
+    .catch(error => {
+    console.error('Error sending data to backend:', error);
+    });
+    }
+  script(type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async='' defer='')
+#myMap(style='position:relative;width:100%;height:100%;')

@@ -1,0 +1,35 @@
+doctype html
+head
+  title Emergency Button
+  style.
+    body,
+    html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    }
+    .emergency-button {
+    width: 50vh;
+    height: 50vh;
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    }
+    .emergency-button:hover {
+    /* Add any hover effects here */
+    /* For example, changing the shade of red */
+    background-color: #ff3333;
+    }
+  form(action='./resSend.pug' method='post')
+    button.emergency-button(type='submit')
+      span(style='color: white; font-size: 24px;') emergency

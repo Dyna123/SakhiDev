@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: rgb(147, 191, 230); /* Pastel blue background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-position: center ;
+}
+
+#container {
+    height: 70vh;
+    width: 30vw;
+    background-color: transparent ;/* Semi-transparent white */
+    border:2px solid white;
+    border-radius: 30px;
+    backdrop-filter: blur(18px);
+        box-shadow: 0 0 20px rgba(156, 149, 149, 0.5); /* Adjust the values as needed */
+
+    
+   
+}
+
+#container form {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;/* Pastel peach background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15%;
+    padding: 25% 0;
+}
+
+#container form input {
+    height: 35px;
+    font-size: 20px;
+    color:white;
+    outline: none;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border-radius: 10px;
+}
+
+#container form input:focus::placeholder {
+    transform: translateY(-5px);
+    font-size: 15px;
+    
+}
+#container form input::placeholder {
+    color:white;
+}
+
+h1{
+    font-size: 2.3rem;
+    color:white;
+}
+button #btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn{
+    height: 3rem;
+    width: 7rem;
+    font-size: 1rem;
+    background-color: transparent !important;
+    border: 0.1rem solid rgb(246, 246, 248);
+    color: rgb(255, 255, 255) ;
+    border-radius: 10px;
+}
+#btn:hover{
+    cursor: pointer !important;
+    color: violet;
+    border: 0.1rem solid rgb(76, 76, 115);
+}
