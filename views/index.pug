@@ -1,23 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#{section}</title>
-    style 
-        include ../style.css
-</head>
-<body>
-    <div id="container">
-     
-        <form action="./otp.pug" method="post">
-            <h1>Sign In</h1>
-            <input name="username" type="text" id="username" placeholder="Username" required>
-            
-            <input name="password" type="number" id="password" placeholder="PhoneNo." required>
-            <button id="btn">Submit</button>
-        </form>
-    </div>
-    
-</body>
-</html>
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= section
+    style
+      include ../style.css
+    title Textillate Example
+    // Include jQuery
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    // Include lettering.js
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js")
+    // Include textillate.js
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js")
+    // Include CSS for textillate
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css")
+  body
+    h1.tlt "A woman's right to safety is as sacred as her right to freedom and dignity."
+    script.
+      $('.tlt').textillate({
+        in: {
+          effect: 'rotateInDownLeft', 
+          delayScale: 1,         
+          delay: 50                
+        },
+        out: {
+          effect: 'fadeOut', 
+          delayScale: 1.3,   
+          delay: 50          
+        }
+      });
+    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi facere nemo at repellendus, natus dolor s illum nemo saepe delenit
+    #circle1
+    #circle2
+    #container
+      form(action="./otp.pug", method="post")
+        h1#quote Welcome to sakhi
+        input(name="username", type="text", id="username", placeholder="Username", required)
+        input(name="password", type="text", id="password", placeholder="PhoneNo.", required)
+        button#btn Submit

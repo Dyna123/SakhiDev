@@ -15,7 +15,7 @@ var latitude;
 var longitude;
 var data;
 let password;    
-  
+var googleMapsURL;
 const accountSid = process.env.ACCOUNTSID;
 const authToken = process.env.AUTHTOKEN;
 
@@ -116,10 +116,10 @@ app.post("/otp.pug",async function (req, res) {
 });
 
 
-function sendLocation(friendNumber,lat,lon) {
+function sendLocation(friendNumber,lat,lon,url) {
   client.messages
     .create({
-      body: `Your friend is in danger!! Need Help at latitude:${lat} and longitude:${lon} ASAP!`,
+      body: `Your friend is in danger!! Need Help at latitude:${lat} and longitude:${lon} URL:${url} ASAP!`,
       from: "+14807250918",
       to: `+91${friendNumber}`,
     })
@@ -188,15 +188,14 @@ app.post("/resLoc", async function (req, res) {
   console.log(data);
   latitude=data.latitude;
   longitude=data.longitude;
-  console.log(latitude,longitude);
+  googleMapsURL = `https://www.google.com/maps?q=${latitude},${longitude}&z=15&t=m`;
   const documents = await modelRegistration.find({userPhn:phoneNumber});
-  console.log(documents);
   documents.forEach((doc)=>{
     numberArray=[doc.phnNo1,doc.phnNo2,doc.phnNo3,doc.phnNo4,doc.phnNo5,doc.phnNo6];
   })
   console.log(numberArray);
   numberArray.forEach((number)=>{
-    sendLocation(number,latitude,longitude);
+    sendLocation(number,latitude,longitude,googleMapsURL);
     console.log("sent location successfully!!");
   }) 
 })
